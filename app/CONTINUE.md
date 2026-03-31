@@ -1,0 +1,105 @@
+# CampusAI — Session Handoff Prompt
+
+> Paste this entire file as your FIRST message in a new Claude or Gemini session.
+> It gives the new instance full context to continue without re-explanation.
+
+---
+
+## Who I Am
+I am Kevin Afenyo (KT Innovations / TechKnowslogic), a full-stack developer
+based in Ghana (Flutter, Node.js, PostgreSQL, Supabase, Redis).
+
+## Workflow
+- **Claude** handles architecture, spec writing, debugging logic, and design decisions.
+  Claude produces complete implementation specs so Gemini only needs to write to disk.
+- **Gemini CLI + Desktop Commander MCP** executes file writes and terminal commands.
+
+## Project
+**CampusAI** — An AI-powered campus assistant for Central University Ghana, Miotso Campus.
+Built at the CIReN Mini Hackathon 2026 (MLH + Google).
+
+## Repo Location
+`/Users/kevinafenyo/Documents/GitHub/gemini/campusAI/`
+
+## Structure
+```
+campusAI/
+├── app/        ← Flutter mobile app (PRIMARY FOCUS)
+│   ├── PHASES.md   ← Full phase-by-phase build plan (READ THIS FIRST)
+│   ├── LOG.md      ← Implementation log (check for completed phases)
+│   └── CONTINUE.md ← This file
+├── api/        ← Node.js/Express backend (not started yet)
+└── web/        ← React web app (not started yet)
+```
+
+## Flutter Details
+- Flutter binary: `/Users/kevinafenyo/flutter/bin/flutter`
+- Project root: `/Users/kevinafenyo/Documents/GitHub/gemini/campusAI/app`
+- Package name: `com.ktinnovations.campus_ai`
+
+## Design System
+| Token | Hex | Usage |
+|---|---|---|
+| Background | `#0F0205` | Main background |
+| Surface | `#120508` | Bottom sheet, cards |
+| Primary | `#8B1A2B` | CU Maroon — buttons, active states |
+| Gold | `#C9922A` | Accent — FAB, highlights |
+| Text Primary | `#FFFFFF` | Headings |
+| Text Secondary | `rgba(255,255,255,0.6)` | Labels |
+
+Typography: Playfair Display (headings, 700) + DM Sans (body, 400/500)
+Design language: Dark ambient, maroon radial glow blob, bottom sheet actions,
+gold mic/send FAB. Based on reference image provided by Kevin.
+
+## Pages (4)
+1. Splash — logo, glow, auto-navigate to Home at 2.5s
+2. Home — greeting, glow, topic cards, gold input bar
+3. Chat — Gemini API conversation UI
+4. Topics / FAQ — topic grid + FAQ list, both pre-fill chat
+
+## AI Integration
+- Model: Google Gemini 1.5 Pro (long context)
+- Approach: Full CU knowledge base dumped into system prompt (no RAG needed for hackathon)
+- Knowledge base: `lib/core/constants/knowledge_base.dart`
+- Provider: `lib/services/chat_provider.dart` (Riverpod StateNotifier)
+- API key: stored in `.env` as `GEMINI_API_KEY`
+
+## How to Resume
+
+### Step 1 — Read current state
+Ask Claude (or read manually):
+```
+Read these files and tell me what phase we are on and what is next:
+- /Users/kevinafenyo/Documents/GitHub/gemini/campusAI/app/PHASES.md
+- /Users/kevinafenyo/Documents/GitHub/gemini/campusAI/app/LOG.md
+```
+
+### Step 2 — Confirm current phase
+Check LOG.md for the last COMPLETE entry. The next phase after that is where to continue.
+
+### Step 3 — Execute
+Ask Claude to produce the implementation spec for the next phase, then hand to Gemini to execute.
+
+## Output Format (Claude must always follow this)
+1. **Pre-flight reads** — list every file to read before touching anything
+2. **Actions** — numbered steps with exact file paths and what to change
+3. **Verification** — command to run + expected output
+4. **LOG.md entry** — exact text to append when done
+
+Label every action:
+- `[CLAUDE HANDLES]` — reasoning, architecture, writing code spec
+- `[GEMINI EXECUTES]` — mechanical writes, terminal commands, file creation
+
+## Current Status
+> Update this section at the start of each session.
+
+- Last completed phase: **None — project just initialized**
+- Next phase: **Phase 0 — Project Bootstrap**
+- Blockers: Need Gemini API key before Phase 2
+- Content teammate: Must fill `knowledge_base.dart` before Phase 8
+
+## Important Notes
+- Do NOT start the web or api folder yet — focus is entirely on `app/`
+- The knowledge base `[PASTE ...]` sections must be filled with real CU data
+  by the content research teammate before Phase 8 (demo prep)
+- Keep commits small and frequent — commit after each phase completes

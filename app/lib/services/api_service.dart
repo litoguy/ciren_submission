@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:campus_ai/core/constants/app_constants.dart';
-import 'package:campus_ai/models/chat_message.dart';
 import 'package:campus_ai/models/topic.dart';
 import 'package:campus_ai/models/user.dart';
 import 'package:campus_ai/services/storage_service.dart';

@@ -983,11 +983,11 @@ curl http://localhost:3000/api/chat/history \
 
 | Phase | Description | Est. Time | Status |
 |---|---|---|---|
-| 0 | Project Bootstrap | 20 min | ⬜ |
-| 1 | App Shell + Health | 20 min | ⬜ |
-| 2 | Knowledge Base + Gemini | 30 min | ⬜ |
-| 3 | Chat Route | 25 min | ⬜ |
-| 4 | Topics & FAQ Route | 15 min | ⬜ |
+| 0 | Project Bootstrap | 20 min | ✅ |
+| 1 | App Shell + Health | 20 min | ✅ |
+| 2 | Knowledge Base + Gemini | 30 min | ✅ |
+| 3 | Chat Route | 25 min | ✅ |
+| 4 | Topics & FAQ Route | 15 min | ✅ |
 | 5 | Auth Routes | 40 min | ⬜ |
 | 6 | User Profile | 15 min | ⬜ |
 | 7 | Integration Test | 20 min | ⬜ |

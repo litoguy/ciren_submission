@@ -40,3 +40,11 @@
 - Files created: src/middleware/optionalAuth.js
 - Files modified: src/routes/chat.js (replaced stub with full implementation)
 - Verification: node --check clean, POST /api/chat → Gemini reply confirmed (guest mode)
+
+---
+
+## Phase 4 — Topics & FAQ Route
+- Date: 2026-03-31
+- Status: ✅ COMPLETE
+- Files modified: src/routes/topics.js (replaced stub with full implementation)
+- Verification: GET /api/topics → 8 topics confirmed, GET /api/faqs → 10 FAQs confirmed

@@ -4,6 +4,8 @@ import ChatSidebar from "@/components/ChatSidebar";
 import ChatWelcome from "@/components/ChatWelcome";
 import ChatMessages, { Message } from "@/components/ChatMessages";
 import ChatInput from "@/components/ChatInput";
+import { api } from "@/lib/api";
+import AuthPrompt from "@/components/AuthPrompt";
 
 interface Chat {
   id: string;
@@ -58,27 +60,38 @@ const Index = () => {
 
       setIsLoading(true);
 
-      // Simulated AI response (replace with real AI integration)
-      setTimeout(() => {
-        const responses = [
-          "Hello! I'm CU Chat, your Central University AI assistant. I can help you with course information, campus facilities, academic resources, and more. What would you like to know?",
-          "That's a great question! At Central University, we offer a wide range of programs and resources to support your academic journey. Could you be more specific about what you'd like to learn?",
-          "I'd be happy to help with that! Central University has numerous resources available for students. Let me provide you with some relevant information.",
-        ];
+      try {
+        const response = await api.postChat(text);
+        
+        if (response.success && response.data) {
+          const assistantMsg: Message = {
+            id: crypto.randomUUID(),
+            role: "assistant",
+            content: response.data.reply,
+          };
 
-        const assistantMsg: Message = {
+          setChats((prev) =>
+            prev.map((c) =>
+              c.id === chatId ? { ...c, messages: [...c.messages, assistantMsg] } : c
+            )
+          );
+        }
+      } catch (error) {
+        console.error("Chat error:", error);
+        // Add an error message to the chat
+        const errorMsg: Message = {
           id: crypto.randomUUID(),
           role: "assistant",
-          content: responses[Math.floor(Math.random() * responses.length)],
+          content: "Sorry, I encountered an error. Please try again later.",
         };
-
         setChats((prev) =>
           prev.map((c) =>
-            c.id === chatId ? { ...c, messages: [...c.messages, assistantMsg] } : c
+            c.id === chatId ? { ...c, messages: [...c.messages, errorMsg] } : c
           )
         );
+      } finally {
         setIsLoading(false);
-      }, 1200);
+      }
     },
     [activeChatId, createChat]
   );
@@ -121,17 +134,18 @@ const Index = () => {
 
         {/* Chat area */}
         {activeChat && activeChat.messages.length > 0 ? (
-          <ChatMessages messages={activeChat.messages} isLoading={isLoading} />
+          <>
+            <ChatMessages messages={activeChat.messages} isLoading={isLoading} />
+            <ChatInput
+              onSend={handleSend}
+              isLoading={isLoading}
+              initialValue={pendingSuggestion}
+            />
+          </>
         ) : (
-          <ChatWelcome onSuggestionClick={handleSuggestionClick} />
+          <ChatWelcome onSend={handleSend} isLoading={isLoading} />
         )}
-
-        {/* Input */}
-        <ChatInput
-          onSend={handleSend}
-          isLoading={isLoading}
-          initialValue={pendingSuggestion}
-        />
+        <AuthPrompt />
       </div>
     </div>
   );

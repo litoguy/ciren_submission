@@ -96,13 +96,16 @@ Label every action:
 ## Current Status
 > Update this section at the start of each session.
 
-- Last completed phase: **None — project just initialized**
+- Last completed phase: **None — PHASES.md v2 just written**
 - Next phase: **Phase 0 — Project Bootstrap**
-- Blockers: Need Gemini API key before Phase 2
-- Content teammate: Must fill `knowledge_base.dart` before Phase 8
+- Blockers: API must be running before Phase 5 (chat screen live test)
+- Content teammate: Must fill `src/knowledge/campusData.js` in API before demo
 
 ## Important Notes
-- Do NOT start the web or api folder yet — focus is entirely on `app/`
-- The knowledge base `[PASTE ...]` sections must be filled with real CU data
-  by the content research teammate before Phase 8 (demo prep)
-- Keep commits small and frequent — commit after each phase completes
+- PHASES.md is v2 — Gemini SDK removed, ApiService replaces it
+- Phases 0–6 = fully working app. Phases 7–9 = polish + build.
+- If time is short, stop at Phase 6 — you have a functional demo
+- API must be running at `API_BASE_URL` in `.env` before Phase 5
+- `.env` uses `10.0.2.2:3000` for Android emulator, `localhost:3000` for iOS sim
+- Knowledge base content goes in `api/src/knowledge/campusData.js` — NOT in the app
+- Commit after every phase

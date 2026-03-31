@@ -2,6 +2,7 @@ import { BookOpen, MapPin, Calendar, HelpCircle, GraduationCap, DollarSign, Mess
 import { useQuery } from "@tanstack/react-query";
 import { api } from "@/lib/api";
 import ChatInput from "./ChatInput";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface ChatWelcomeProps {
   onSend: (text: string) => void;
@@ -38,12 +39,43 @@ const ChatWelcome = ({ onSend, isLoading }: ChatWelcomeProps) => {
   const topics = topicsData?.data?.topics || [];
   const faqs = faqsData?.data?.faqs || [];
 
+  const isBasicallyLoading = topicsLoading || faqsLoading || isLoading;
+
   return (
     <div className="flex-1 overflow-y-auto w-full">
       <div className="flex flex-col items-center p-6 max-w-4xl mx-auto py-12 space-y-12 min-h-full">
         <div className="flex flex-col items-center text-center space-y-4">
-          <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-primary/10 mb-2">
-            <GraduationCap className="w-10 h-10 text-primary" />
+          <div className="w-20 h-20 relative flex items-center justify-center mb-2">
+            <AnimatePresence>
+              {isBasicallyLoading && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 0.5, scale: 1.2 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "easeInOut"
+                  }}
+                  className="absolute inset-0 rounded-full bg-primary/20 blur-xl"
+                />
+              )}
+            </AnimatePresence>
+            <motion.img
+              src="/logo.png"
+              alt="Logo"
+              animate={isBasicallyLoading ? {
+                scale: [1, 1.05, 1],
+                filter: ["grayscale(0%)", "grayscale(20%)", "grayscale(0%)"]
+              } : {}}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="w-16 h-16 relative z-10"
+            />
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-foreground">
             How can I help you today?

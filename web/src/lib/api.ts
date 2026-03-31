@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_API_URL || "https://ciren-hakathon-api.onrender.com";
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export interface ApiResponse<T> {
   success: boolean;

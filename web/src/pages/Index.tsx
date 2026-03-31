@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Menu } from "lucide-react";
 import ChatSidebar from "@/components/ChatSidebar";
 import ChatWelcome from "@/components/ChatWelcome";
@@ -16,6 +16,13 @@ interface Chat {
 
 const Index = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      setSidebarOpen(false);
+    }
+  }, []);
   const [chats, setChats] = useState<Chat[]>([]);
   const [activeChatId, setActiveChatId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);

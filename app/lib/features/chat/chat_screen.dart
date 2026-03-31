@@ -62,40 +62,69 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
       backgroundColor: AppColors.background,
       appBar: AppBar(
         backgroundColor: AppColors.surface,
+        surfaceTintColor: Colors.transparent,
         title: Text('CampusAI',
           style: GoogleFonts.playfairDisplay(color: AppColors.textPrimary, fontSize: 18)),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh, color: AppColors.textMuted),
-            onPressed: () => ref.read(chatProvider.notifier).clear(),
-            tooltip: 'Clear chat',
-          ),
+          if (messages.isNotEmpty)
+            IconButton(
+              icon: const Icon(Icons.delete_outline, color: AppColors.textMuted),
+              onPressed: () => ref.read(chatProvider.notifier).clear(),
+              tooltip: 'Clear chat',
+            ),
         ],
       ),
-      body: Column(children: [
-        // Messages list
-        Expanded(
-          child: messages.isEmpty
-            ? Center(child: Text(
-                'Ask me anything about Central University',
-                style: GoogleFonts.dmSans(color: AppColors.textMuted, fontSize: 14),
-                textAlign: TextAlign.center,
-              ))
-            : ListView.builder(
-                controller: _scroll,
-                padding: const EdgeInsets.all(16),
-                itemCount: messages.length + (isLoading ? 1 : 0),
-                itemBuilder: (_, i) {
-                  if (i == messages.length) return const _TypingIndicator();
-                  return _MessageBubble(message: messages[i], isFirst: i == 1);
-                },
-              ),
-        ),
-        // Input row
-        _InputRow(controller: _controller, onSend: _send),
-      ]),
+      body: SafeArea(
+        child: Column(children: [
+          // Messages list
+          Expanded(
+            child: messages.isEmpty
+              ? _EmptyState()
+              : ListView.builder(
+                  controller: _scroll,
+                  padding: const EdgeInsets.all(16),
+                  itemCount: messages.length + (isLoading ? 1 : 0),
+                  itemBuilder: (_, i) {
+                    if (i == messages.length) return const _TypingIndicator();
+                    return _MessageBubble(message: messages[i], isFirst: i == 1);
+                  },
+                ),
+          ),
+          // Input row
+          _InputRow(controller: _controller, onSend: _send),
+        ]),
+      ),
     );
   }
+}
+
+class _EmptyState extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => Center(
+    child: Padding(
+      padding: const EdgeInsets.all(32),
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Container(
+          width: 64, height: 64,
+          decoration: BoxDecoration(
+            color: AppColors.primary.withOpacity(0.2),
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: const Icon(Icons.school_rounded, color: AppColors.gold, size: 32),
+        ),
+        const SizedBox(height: 20),
+        Text('Ask CampusAI',
+          style: GoogleFonts.playfairDisplay(
+            color: AppColors.textPrimary, fontSize: 20, fontWeight: FontWeight.w700)),
+        const SizedBox(height: 8),
+        Text(
+          'I can help with fees, registration,\nexams, campus life, and more.',
+          style: GoogleFonts.dmSans(color: AppColors.textMuted, fontSize: 13, height: 1.5),
+          textAlign: TextAlign.center,
+        ),
+      ]),
+    ),
+  );
 }
 
 class _MessageBubble extends StatelessWidget {
@@ -188,7 +217,7 @@ class _InputRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+    padding: EdgeInsets.fromLTRB(16, 8, 16, MediaQuery.of(context).padding.bottom + 8),
     decoration: const BoxDecoration(
       color: AppColors.surface,
       border: Border(top: BorderSide(color: AppColors.cardIcon)),

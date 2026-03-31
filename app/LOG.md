@@ -70,3 +70,11 @@
 - Verification: flutter analyze clean, animations confirmed on device
 
 ---
+
+## Phase 8 — Full Polish Pass
+- Date: 2026-03-31
+- Status: COMPLETE
+- Fixes applied: scaffold_with_nav.dart (NavigationBar theme), topics_screen.dart (retry buttons, InkWell), chat_screen.dart (empty state, SafeArea, keyboard), home_screen.dart (animations, retry, tagline)
+- Verification: flutter analyze clean, full demo walkthrough complete
+
+---

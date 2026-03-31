@@ -17,6 +17,7 @@ class TopicsScreen extends ConsumerWidget {
       backgroundColor: AppColors.background,
       appBar: AppBar(
         backgroundColor: AppColors.surface,
+        surfaceTintColor: Colors.transparent,
         title: Text('Topics & FAQ',
           style: GoogleFonts.playfairDisplay(color: AppColors.textPrimary, fontSize: 18)),
       ),
@@ -24,14 +25,21 @@ class TopicsScreen extends ConsumerWidget {
         padding: const EdgeInsets.all(16),
         children: [
           // Topic grid
-          Text('Quick Topics',
+          Text('QUICK TOPICS',
             style: GoogleFonts.dmSans(color: AppColors.textMuted,
-              fontSize: 11, letterSpacing: 1, fontWeight: FontWeight.w500)),
+              fontSize: 11, letterSpacing: 1.2, fontWeight: FontWeight.w500)),
           const SizedBox(height: 12),
           topicsAsync.when(
-            loading: () => const Center(child: CircularProgressIndicator(color: AppColors.gold)),
-            error: (e, _) => Text('Could not load topics. $e',
-              style: GoogleFonts.dmSans(color: AppColors.error)),
+            loading: () => const Center(
+              child: Padding(
+                padding: EdgeInsets.all(24),
+                child: CircularProgressIndicator(color: AppColors.gold, strokeWidth: 2),
+              ),
+            ),
+            error: (e, _) => _ErrorRetry(
+              message: 'Could not load topics',
+              onRetry: () => ref.invalidate(topicsProvider),
+            ),
             data: (topics) => GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -42,24 +50,30 @@ class TopicsScreen extends ConsumerWidget {
               itemCount: topics.length,
               itemBuilder: (_, i) {
                 final t = topics[i];
-                return GestureDetector(
-                  onTap: () => context.go('/chat?message=${Uri.encodeComponent(t.prompt)}'),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.surface,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: AppColors.cardIcon),
+                return Material(
+                  color: AppColors.surface,
+                  borderRadius: BorderRadius.circular(12),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(12),
+                    splashColor: AppColors.primary.withOpacity(0.15),
+                    onTap: () => context.go('/chat?message=${Uri.encodeComponent(t.prompt)}'),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(color: AppColors.cardIcon),
+                      ),
+                      padding: const EdgeInsets.all(12),
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(t.icon, style: const TextStyle(fontSize: 22)),
+                          const SizedBox(height: 6),
+                          Text(t.label,
+                            style: GoogleFonts.dmSans(color: AppColors.textPrimary,
+                              fontSize: 12, fontWeight: FontWeight.w500),
+                            maxLines: 2, overflow: TextOverflow.ellipsis),
+                        ]),
                     ),
-                    padding: const EdgeInsets.all(12),
-                    child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(t.icon, style: const TextStyle(fontSize: 22)),
-                        const SizedBox(height: 6),
-                        Text(t.label,
-                          style: GoogleFonts.dmSans(color: AppColors.textPrimary,
-                            fontSize: 12, fontWeight: FontWeight.w500)),
-                      ]),
                   ),
                 );
               },
@@ -68,14 +82,21 @@ class TopicsScreen extends ConsumerWidget {
           const SizedBox(height: 24),
 
           // FAQ list
-          Text('Frequently Asked Questions',
+          Text('FREQUENTLY ASKED',
             style: GoogleFonts.dmSans(color: AppColors.textMuted,
-              fontSize: 11, letterSpacing: 1, fontWeight: FontWeight.w500)),
+              fontSize: 11, letterSpacing: 1.2, fontWeight: FontWeight.w500)),
           const SizedBox(height: 8),
           faqsAsync.when(
-            loading: () => const Center(child: CircularProgressIndicator(color: AppColors.gold)),
-            error: (e, _) => Text('Could not load FAQs. $e',
-              style: GoogleFonts.dmSans(color: AppColors.error)),
+            loading: () => const Center(
+              child: Padding(
+                padding: EdgeInsets.all(24),
+                child: CircularProgressIndicator(color: AppColors.gold, strokeWidth: 2),
+              ),
+            ),
+            error: (e, _) => _ErrorRetry(
+              message: 'Could not load FAQs',
+              onRetry: () => ref.invalidate(faqsProvider),
+            ),
             data: (faqs) => Column(
               children: faqs.map((f) => ListTile(
                 contentPadding: EdgeInsets.zero,
@@ -91,4 +112,26 @@ class TopicsScreen extends ConsumerWidget {
       ),
     );
   }
+}
+
+class _ErrorRetry extends StatelessWidget {
+  final String message;
+  final VoidCallback onRetry;
+  const _ErrorRetry({required this.message, required this.onRetry});
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.symmetric(vertical: 16),
+    child: Column(children: [
+      const Icon(Icons.cloud_off_rounded, color: AppColors.textMuted, size: 32),
+      const SizedBox(height: 8),
+      Text(message, style: GoogleFonts.dmSans(color: AppColors.textSecondary, fontSize: 13)),
+      const SizedBox(height: 12),
+      TextButton.icon(
+        onPressed: onRetry,
+        icon: const Icon(Icons.refresh, color: AppColors.gold, size: 18),
+        label: Text('Retry', style: GoogleFonts.dmSans(color: AppColors.gold, fontSize: 13)),
+      ),
+    ]),
+  );
 }

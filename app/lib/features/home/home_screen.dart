@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:campus_ai/core/theme/app_theme.dart';
 import 'package:campus_ai/providers/topics_provider.dart';
 import 'package:campus_ai/services/storage_service.dart';
@@ -46,7 +47,11 @@ class HomeScreen extends ConsumerWidget {
                     color: AppColors.textSecondary, fontSize: 22)),
                 Text(name, style: GoogleFonts.playfairDisplay(
                   color: AppColors.textPrimary, fontSize: 36, fontWeight: FontWeight.w700)),
-              ]),
+                const SizedBox(height: 8),
+                Text('Your AI campus guide',
+                  style: GoogleFonts.dmSans(color: AppColors.gold, fontSize: 13,
+                    fontWeight: FontWeight.w500)),
+              ]).animate().fadeIn(duration: 500.ms).slideY(begin: 0.15),
             ),
             const Spacer(),
             // Bottom sheet content
@@ -57,16 +62,23 @@ class HomeScreen extends ConsumerWidget {
               ),
               child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 20),
                   Padding(padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Text('Quick Topics',
+                    child: Text('QUICK TOPICS',
                       style: GoogleFonts.dmSans(color: AppColors.textMuted,
-                        fontSize: 11, letterSpacing: 1))),
-                  const SizedBox(height: 10),
+                        fontSize: 11, letterSpacing: 1.2, fontWeight: FontWeight.w500))),
+                  const SizedBox(height: 12),
                   // Topics horizontal scroll
                   SizedBox(height: 90, child: topicsAsync.when(
-                    loading: () => const Center(child: CircularProgressIndicator(color: AppColors.gold)),
-                    error: (_, __) => const SizedBox.shrink(),
+                    loading: () => const Center(
+                      child: CircularProgressIndicator(color: AppColors.gold, strokeWidth: 2)),
+                    error: (_, __) => Center(
+                      child: TextButton.icon(
+                        onPressed: () => ref.invalidate(topicsProvider),
+                        icon: const Icon(Icons.refresh, color: AppColors.gold, size: 18),
+                        label: Text('Retry', style: GoogleFonts.dmSans(color: AppColors.gold)),
+                      ),
+                    ),
                     data: (topics) => ListView.separated(
                       scrollDirection: Axis.horizontal,
                       padding: const EdgeInsets.symmetric(horizontal: 20),

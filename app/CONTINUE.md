@@ -57,12 +57,15 @@ gold mic/send FAB. Based on reference image provided by Kevin.
 3. Chat — Gemini API conversation UI
 4. Topics / FAQ — topic grid + FAQ list, both pre-fill chat
 
-## AI Integration
-- Model: Google Gemini 1.5 Pro (long context)
-- Approach: Full CU knowledge base dumped into system prompt (no RAG needed for hackathon)
-- Knowledge base: `lib/core/constants/knowledge_base.dart`
-- Provider: `lib/services/chat_provider.dart` (Riverpod StateNotifier)
-- API key: stored in `.env` as `GEMINI_API_KEY`
+## AI Integration — ARCHITECTURE UPDATED
+- **Gemini lives in the API, not the app.**
+- The app calls `POST /api/chat` on the CampusAI API (Node.js/Express).
+- The API handles Gemini, the knowledge base, and session management.
+- The app's Phase 2 (GeminiService) is REPLACED by an `ApiService` that calls the API.
+- API base URL: `http://localhost:3000` (dev) — set in `.env` as `API_BASE_URL`
+- API contracts: `/Users/kevinafenyo/Documents/GitHub/gemini/campusAI/api/CONTRACTS.md`
+- API phase plan: `/Users/kevinafenyo/Documents/GitHub/gemini/campusAI/api/PHASES.md`
+- Complete the API (api/PHASES.md) before resuming app Phase 2+
 
 ## How to Resume
 

@@ -33,3 +33,10 @@
 - Verification: node --check passed on all three files
 
 ---
+
+## Phase 3 — Chat Route
+- Date: 2026-03-31
+- Status: ✅ COMPLETE
+- Files created: src/middleware/optionalAuth.js
+- Files modified: src/routes/chat.js (replaced stub with full implementation)
+- Verification: node --check clean, POST /api/chat → Gemini reply confirmed (guest mode)

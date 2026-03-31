@@ -7,9 +7,42 @@
 ---
 
 ## Phase 0 — Project Bootstrap
-- Date: [DATE]
-- Status: ⬜ PENDING
-- Files created: —
-- Verification: —
+- Date: 2026-03-31
+- Status: COMPLETE
+- Files created: pubspec.yaml, .env, lib/ structure (12 dirs), font assets
+- Note: google_generative_ai NOT included — API handles Gemini
+- Verification: flutter analyze — no issues
+
+---
+
+## Phase 1 — Theme + App Constants
+- Date: 2026-03-31
+- Status: COMPLETE
+- Files created: lib/core/theme/app_theme.dart, lib/core/constants/app_constants.dart
+- Verification: flutter analyze — no issues
+
+---
+
+## Phase 2 — Models + ApiService + StorageService
+- Date: 2026-03-31
+- Status: COMPLETE
+- Files created: lib/models/chat_message.dart, lib/models/topic.dart, lib/models/user.dart, lib/services/storage_service.dart, lib/services/api_service.dart
+- Verification: flutter analyze — no issues
+
+---
+
+## Phase 3 — Riverpod Providers
+- Date: 2026-03-31
+- Status: COMPLETE
+- Files created: lib/providers/chat_provider.dart, lib/providers/topics_provider.dart, lib/providers/auth_provider.dart
+- Verification: flutter analyze — no issues
+
+---
+
+## Phase 4 — Router + main.dart + Stub Screens
+- Date: 2026-03-31
+- Status: COMPLETE
+- Files created: lib/router/app_router.dart, lib/features/shell/scaffold_with_nav.dart, lib/main.dart, 4x stub screens
+- Verification: app launches, navigation confirmed, no crashes
 
 ---

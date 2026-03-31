@@ -29,14 +29,16 @@
             echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 --decode > android/app/keystore.jks
           working-directory: app
         - name: Build AAB (release, signed)
+          if: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
           env:
             ANDROID_KEYSTORE_PATH: android/app/keystore.jks
             ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
             ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
             ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
           run: flutter build appbundle --release
-         working-directory: app
+          working-directory: app
         - name: Build APK (release, signed)
+          if: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
           env:
             ANDROID_KEYSTORE_PATH: android/app/keystore.jks
             ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
@@ -44,13 +46,25 @@
             ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
           run: flutter build apk --release
           working-directory: app
-        - name: Upload APK
-         uses: actions/upload-artifact@v4
-         with:
+        - name: Upload APK (release)
+          if: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+          uses: actions/upload-artifact@v4
+          with:
             name: android-apk-release
             path: app/build/app/outputs/flutter-apk/app-release.apk
-        - name: Upload AAB
+        - name: Upload AAB (release)
+          if: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
           uses: actions/upload-artifact@v4
           with:
             name: android-aab-release
             path: app/build/app/outputs/bundle/release/app-release.aab
+        - name: Build APK (debug fallback)
+          if: ${{ secrets.ANDROID_KEYSTORE_BASE64 == '' }}
+          run: flutter build apk --debug
+          working-directory: app
+        - name: Upload APK (debug)
+          if: ${{ secrets.ANDROID_KEYSTORE_BASE64 == '' }}
+          uses: actions/upload-artifact@v4
+          with:
+            name: android-apk-debug
+            path: app/build/app/outputs/flutter-apk/app-debug.apk

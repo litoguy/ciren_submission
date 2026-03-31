@@ -22,3 +22,14 @@
 - Verification: node --check clean, GET /health → 200 OK confirmed
 
 ---
+
+## Phase 2 — Knowledge Base + Gemini Service
+- Date: 2026-03-31
+- Status: ✅ COMPLETE
+- Files created: src/config/gemini.js, src/knowledge/campusData.js,
+  src/services/geminiService.js
+- Note: campusData.js has [PASTE] placeholders — content team fills before demo
+- Blocker: GEMINI_API_KEY must be set in .env before runtime works
+- Verification: node --check passed on all three files
+
+---

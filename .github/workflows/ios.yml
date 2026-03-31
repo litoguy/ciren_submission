@@ -24,14 +24,14 @@ jobs:
       - name: Flutter Pub Get
         run: flutter pub get
         working-directory: app
-      - name: Prepare iOS build (no codesign fallback)
-        if: ${{ env.APPLE_P12_BASE64 == '' || env.APPLE_PROVISION_PROFILE_BASE64 == '' }}
+      - name: Prepare iOS build (no codesign)
         run: flutter build ios --release --no-codesign
         working-directory: app
-      - name: Archive with Xcode (no codesign fallback)
-        if: ${{ env.APPLE_P12_BASE64 == '' || env.APPLE_PROVISION_PROFILE_BASE64 == '' }}
+      - name: Archive with Xcode (no codesign)
         run: xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -configuration Release -archivePath build/ios/archive/Runner.xcarchive CODE_SIGNING_ALLOWED=NO archive
         working-directory: app
       - name: Upload Xcode Archive
         uses: actions/upload-artifact@v4
         with:
+          name: ios-xcarchive
+          path: app/build/ios/archive/Runner.xcarchive

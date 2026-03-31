@@ -115,6 +115,17 @@ All 7  phases done. Remaining before demo:
 
 ---
 
+---
+
+## Knowledge Base Update — Hostels & Eateries Details
+- Date: 2026-03-31
+- Status: ✅ COMPLETE
+- File modified: src/knowledge/campusData.js
+- Changes: Added location details for eateries (Central Plaza, Pronto) and comprehensive off-campus hostel list under Student Life; confirmed on-campus hostels
+- Verification: node --check passed
+
+---
+
 ## Knowledge Base Update — Grading Scale
 - Date: 2026-03-31
 - Status: ✅ COMPLETE

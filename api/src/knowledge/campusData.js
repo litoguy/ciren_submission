@@ -312,9 +312,13 @@ Student Handbook (2025/2026):
 - https://webcms.central.edu.gh/wp-content/uploads/2026/02/undergraduate-students-handbook-FINAL-compressed.pdf
 
 Canteen and Eateries:
-- Main Canteen Hours: 7:00 AM – 7:00 PM
+- Food Court Hours: 7:00 AM – 7:00 PM
 - Night Vendors: 6:00 PM – 1:00 AM
-- Eateries on campus: Iklina, Champion, Midway, Joesam
+- Eateries on campus:
+- - Iklina — Central Plaza
+- - Champion — Central Plaza
+- - Midway — Pronto area
+- - Joesam — Pronto area
 
 Campus Buildings and Locations:
 - Academic blocks: Block A through Block G
@@ -395,10 +399,46 @@ Clubs and Societies:
 - [PASTE LIST OF ACTIVE CLUBS — tech, debate, Christian, Muslim, sports, etc.]
 
 Accommodation / Hostels:
-- [PASTE NAMES OF ON-CAMPUS HOSTELS]
-- [PASTE OFF-CAMPUS RECOMMENDED HOSTELS]
-- [PASTE HOSTEL APPLICATION PROCESS AND DEADLINES]
-- [PASTE HOSTEL FEES]
+- On-campus hostels:
+- - Old Girls Hostel
+- - Pronto Hostel
+- - CU Male Hostel
+- Off-campus hostels (selection):
+- - City Escape Hotel
+- - Gifty Hostel
+- - J and J Hostel
+- - Queens Court Hostel
+- - Blue Hostel
+- - White Hostel
+- - Masco Hostel
+- - Lartey Apartment
+- - Studio Apartment
+- - Pramheart Apartment
+- - St Micheals
+- - Senata Hostel
+- - Green Hostel
+- - Valerie Apartments
+- - Valerie Hostel
+- - Eza’s Apartment
+- - Corner Stone Hostel
+- - Yellow Hostel
+- - Aseda Hostel
+- - Silver State Hostel
+- - Gig Hostel
+- - Pramheart Hostel
+- - Appiah Hostel
+- - Sky Hostel
+- - Erics Apartment
+- - Dereks Apartments
+- - Mi Casa Hostel
+- - Fortress Hostel
+- - Calvary Liberty Hostel
+- - Starley Hostel
+- - Sewkem
+- - Oak View Estate
+- - Naa Morkor
+- - Rijos Hostel
+- - Wilson Hostel
 
 Transport:
 - [PASTE BUS ROUTES AND TIMES FROM CAMPUS TO ACCRA/TEMA]

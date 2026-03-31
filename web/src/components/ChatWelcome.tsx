@@ -1,43 +1,118 @@
-import { BookOpen, FileText, MapPin, Calendar } from "lucide-react";
+import { BookOpen, MapPin, Calendar, HelpCircle, GraduationCap, DollarSign, MessageSquarePlus } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { api } from "@/lib/api";
+import ChatInput from "./ChatInput";
 
 interface ChatWelcomeProps {
-  onSuggestionClick: (text: string) => void;
+  onSend: (text: string) => void;
+  isLoading: boolean;
 }
 
-const suggestions = [
-  { icon: BookOpen, label: "Course help", prompt: "Help me understand my course material", color: "bg-gold-pale text-primary" },
-  { icon: FileText, label: "Write an essay", prompt: "Help me write an academic essay", color: "bg-accent text-accent-foreground" },
-  { icon: MapPin, label: "Campus info", prompt: "Tell me about campus facilities and locations", color: "bg-secondary text-secondary-foreground" },
-  { icon: Calendar, label: "Exam prep", prompt: "Help me prepare for my upcoming exams", color: "bg-gold-pale text-primary-light" },
-];
+const iconMap: Record<string, any> = {
+  fees: DollarSign,
+  exams: Calendar,
+  academics: BookOpen,
+  campus: MapPin,
+  help: HelpCircle,
+};
 
-const ChatWelcome = ({ onSuggestionClick }: ChatWelcomeProps) => {
+const colorMap: Record<string, string> = {
+  fees: "bg-gold-pale text-primary",
+  exams: "bg-accent text-accent-foreground",
+  academics: "bg-secondary text-secondary-foreground",
+  campus: "bg-gold-pale text-primary-light",
+  help: "bg-accent text-accent-foreground",
+};
+
+const ChatWelcome = ({ onSend, isLoading }: ChatWelcomeProps) => {
+  const { data: topicsData, isLoading: topicsLoading } = useQuery({
+    queryKey: ["topics"],
+    queryFn: () => api.getTopics(),
+  });
+
+  const { data: faqsData, isLoading: faqsLoading } = useQuery({
+    queryKey: ["faqs"],
+    queryFn: () => api.getFAQs(),
+  });
+
+  const topics = topicsData?.data?.topics || [];
+  const faqs = faqsData?.data?.faqs || [];
+
   return (
-    <div className="flex-1 flex flex-col items-center justify-center px-6 max-w-2xl mx-auto">
-      <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-        <img src="/logo.png" alt="Logo" className="w-full h-full object-cover" />
-      </div>
+    <div className="flex-1 overflow-y-auto w-full">
+      <div className="flex flex-col items-center p-6 max-w-4xl mx-auto py-12 space-y-12 min-h-full">
+        <div className="flex flex-col items-center text-center space-y-4">
+          <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-primary/10 mb-2">
+            <GraduationCap className="w-10 h-10 text-primary" />
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground">
+            How can I help you today?
+          </h2>
+          <p className="text-muted-foreground max-w-md">
+            Ask anything about Central University courses, fees, or campus life.
+          </p>
+        </div>
 
-      <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3 text-center">
-        Welcome to CU Chat
-      </h2>
-      <p className="text-muted-foreground text-center mb-10 max-w-md">
-        Your AI assistant for Central University. Ask about courses, campus life, assignments, and more.
-      </p>
+        <div className="w-full max-w-2xl">
+          <ChatInput onSend={onSend} isLoading={isLoading} />
+        </div>
 
-      <div className="grid grid-cols-2 gap-3 w-full max-w-lg">
-        {suggestions.map(({ icon: Icon, label, prompt, color }) => (
-          <button
-            key={label}
-            onClick={() => onSuggestionClick(prompt)}
-            className="flex items-center gap-3 px-4 py-3.5 rounded-xl border-[0.5px] border-border bg-card hover:shadow-md hover:border-primary/30 transition-all text-left group"
-          >
-            <div className={`w-9 h-9 rounded-lg ${color} flex items-center justify-center shrink-0`}>
-              <Icon className="w-4 h-4" />
+        <div className="w-full max-w-3xl space-y-10">
+          <div>
+            <h3 className="text-sm font-semibold text-foreground/50 mb-4 px-1 uppercase tracking-widest text-center">
+              Suggested Topics
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {topicsLoading ? (
+                Array.from({ length: 4 }).map((_, i) => (
+                  <div key={i} className="h-24 rounded-xl bg-card animate-pulse border border-border" />
+                ))
+              ) : (
+                topics.map((topic) => {
+                  const Icon = iconMap[topic.id] || HelpCircle;
+                  const color = colorMap[topic.id] || "bg-muted text-muted-foreground";
+                  
+                  return (
+                    <button
+                      key={topic.id}
+                      onClick={() => onSend(topic.prompt)}
+                      className="flex flex-col items-center gap-3 p-4 rounded-xl border-[0.5px] border-border bg-card hover:shadow-md hover:border-primary/30 transition-all text-center group"
+                    >
+                      <div className={`w-10 h-10 rounded-lg ${color} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform`}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <span className="text-xs font-medium text-foreground line-clamp-1">{topic.label}</span>
+                    </button>
+                  );
+                })
+              )}
             </div>
-            <span className="text-sm font-medium text-foreground">{label}</span>
-          </button>
-        ))}
+          </div>
+
+          <div className="mt-8 pb-10">
+            <h3 className="text-sm font-semibold text-foreground/50 mb-4 px-1 uppercase tracking-widest text-center">
+              Common Questions
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {faqsLoading ? (
+                Array.from({ length: 2 }).map((_, i) => (
+                  <div key={i} className="h-14 rounded-xl bg-card animate-pulse border border-border" />
+                ))
+              ) : (
+                faqs.map((faq) => (
+                  <button
+                    key={faq.id}
+                    onClick={() => onSend(faq.question)}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl border-[0.5px] border-border bg-card hover:shadow-sm hover:border-primary/20 transition-all text-left text-sm text-foreground/80 hover:text-foreground"
+                  >
+                    <MessageSquarePlus className="w-4 h-4 text-muted-foreground shrink-0" />
+                    <span className="line-clamp-1">{faq.question}</span>
+                  </button>
+                ))
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

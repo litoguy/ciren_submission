@@ -20,6 +20,12 @@ jobs:
         with:
           channel: 'stable'
           cache: true
+      - name: Create .env (CI default)
+        run: |
+          cat > .env << 'EOF'
+          API_BASE_URL=https://ciren-hakathon-api.onrender.com
+          EOF
+        working-directory: app
       - name: Flutter Pub Get
         run: flutter pub get
         working-directory: app

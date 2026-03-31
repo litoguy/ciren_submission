@@ -1,0 +1,32 @@
+ name: iOS Archive
+ on:
+   workflow_dispatch:
+   push:
+     branches:
+       - main
+   pull_request:
+     branches:
+       - main
+ jobs:
+   build:
+     runs-on: macos-latest
+     steps:
+       - uses: actions/checkout@v4
+       - uses: subosito/flutter-action@v2
+         with:
+           channel: 'stable'
+           cache: true
+       - name: Flutter Pub Get
+         run: flutter pub get
+         working-directory: app
+       - name: Prepare iOS build (no codesign)
+         run: flutter build ios --release --no-codesign
+         working-directory: app
+       - name: Archive with Xcode (no codesign)
+         run: xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -configuration Release -archivePath build/ios/archive/Runner.xcarchive CODE_SIGNING_ALLOWED=NO archive
+         working-directory: app
+       - name: Upload Xcode Archive
+         uses: actions/upload-artifact@v4
+         with:
+           name: ios-xcarchive
+           path: app/build/ios/archive/Runner.xcarchive

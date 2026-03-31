@@ -84,3 +84,40 @@ All 7  phases done. Remaining before demo:
 - File modified: src/services/geminiService.js
 - Change: model 'gemini-1.5-pro' → 'gemini-2.0-flash' (1.5-pro deprecated on v1beta)
 - Verification: POST /api/chat → Gemini reply confirmed
+
+---
+
+## Knowledge Base Update — Fees Data
+- Date: 2026-03-31
+- Status: ✅ COMPLETE
+- File modified: src/knowledge/campusData.js
+- Change: Replaced fees [PASTE] placeholder with real 2025/2026 fee data extracted from official CU schedules
+- Note: Graduate fees are from 2023/2024 — verify current year with Finance
+
+## Knowledge Base Update — Academic Calendar + Announcements
+- Date: 2026-03-31
+- Status: ✅ COMPLETE
+- File modified: src/knowledge/campusData.js
+- Changes:
+  - Section 2: Full 2025/2026 Academic Calendar populated (both Mainstream and Feb cohorts)
+    Source: PDF_GO_2025-2026 Academic Calendar - Final.docx
+  - Section 9: Current Announcements populated with upcoming deadlines,
+    Finaura Conference (today), and active campus clubs
+- Verification: node --check passed
+
+## Knowledge Base Update — Campus Facilities
+- Date: 2026-03-31
+- Status: ✅ COMPLETE
+- File modified: src/knowledge/campusData.js
+- Changes: Section 5 fully populated — library locations & hours, canteen hours,
+  eateries, all campus buildings, hostels, clinic, chapel, SRC office, transport
+- Verification: node --check passed
+
+---
+
+## Knowledge Base Update — Grading Scale
+- Date: 2026-03-31
+- Status: ✅ COMPLETE
+- File modified: src/knowledge/campusData.js
+- Changes: Added full GPA grading scale (A–F with percentage ranges and points)
+- Verification: node --check passed

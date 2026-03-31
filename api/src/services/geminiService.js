@@ -7,7 +7,7 @@ const sessions = new Map();
 
 function createModel() {
   return getGenAI().getGenerativeModel({
-    model: 'gemini-1.5-pro',
+    model: 'gemini-2.5-flash-lite',
     systemInstruction: systemPrompt,
     generationConfig: {
       temperature: 0.3,      // low = factual, not creative
@@ -31,6 +31,10 @@ export function getOrCreateSession(sessionId) {
 /**
  * Send a message and get the AI reply.
  */
+/**
+ * Send a message and get the AI reply.
+ * Surfaces specific error codes so the route can return the right HTTP status.
+ */
 export async function sendMessage(sessionId, message) {
   const chat = getOrCreateSession(sessionId);
   try {
@@ -40,10 +44,28 @@ export async function sendMessage(sessionId, message) {
     return text;
   } catch (err) {
     console.error('[Gemini error]', err.message);
-    if (err.message.includes('API_KEY')) {
-      throw new Error('AI service configuration error. Please contact support.');
+
+    const msg = err.message || '';
+
+    if (msg.includes('API_KEY') || msg.includes('API key')) {
+      const e = new Error('AI service configuration error. Please contact support.');
+      e.status = 500;
+      throw e;
     }
-    throw new Error('AI service is temporarily unavailable. Please try again in a moment.');
+    if (msg.includes('429') || msg.includes('Too Many Requests') || msg.includes('quota')) {
+      const e = new Error('The AI service is currently rate limited. Please try again in a minute.');
+      e.status = 429;
+      throw e;
+    }
+    if (msg.includes('503') || msg.includes('Service Unavailable') || msg.includes('high demand')) {
+      const e = new Error('The AI service is temporarily unavailable due to high demand. Please try again in a few seconds.');
+      e.status = 503;
+      throw e;
+    }
+
+    const e = new Error('AI service is temporarily unavailable. Please try again in a moment.');
+    e.status = 502;
+    throw e;
   }
 }
 

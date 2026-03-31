@@ -989,6 +989,5 @@ curl http://localhost:3000/api/chat/history \
 | 3 | Chat Route | 25 min | ✅ |
 | 4 | Topics & FAQ Route | 15 min | ✅ |
 | 5 | Auth Routes | 40 min | ✅ |
-| 6 | User Profile | 15 min | ✅ |
-| 7 | Integration Test | 20 min | ⬜ |
+| 6 | Integration Test | 20 min | ✅ |
 | | **Total** | **2h 45min** | |

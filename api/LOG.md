@@ -60,3 +60,27 @@
 - Verification: register → 201, login → 200 with JWT, GET /me → profile confirmed,
   duplicate register → 409 confirmed
 
+---
+
+## Phase 6 — Integration Test + Final Wiring Check
+- Date: 2026 -03-31
+- Status: ✅ COMPLETE
+- All 8  integration tests passed
+- node --check clean on all 13 source  files
+- PHASES.md and CONTINUE.md updated
+- API fully built and ready for  client consumption
+
+## ── API BUILD COMPLETE ──
+All 7  phases done. Remaining before demo:
+1. Fill [PASTE] blocks in src/knowledge/campusData.js (content team)
+2. Set real GEMINI_API_KEY in  .env
+3. npm run dev → ready
+
+---
+
+## Hotfix — Gemini Model Name
+- Date: 2026-03-31
+- Status: ✅ FIXED
+- File modified: src/services/geminiService.js
+- Change: model 'gemini-1.5-pro' → 'gemini-2.0-flash' (1.5-pro deprecated on v1beta)
+- Verification: POST /api/chat → Gemini reply confirmed

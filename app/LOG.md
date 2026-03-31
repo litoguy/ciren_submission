@@ -46,3 +46,27 @@
 - Verification: app launches, navigation confirmed, no crashes
 
 ---
+
+## Phase 5 — Functional Chat Screen
+- Date: 2026-03-31
+- Status: COMPLETE
+- Files modified: lib/features/chat/chat_screen.dart
+- Verification: flutter analyze clean, full chat flow confirmed with live API
+
+---
+
+## Phase 6 — Functional Topics + Home Screens
+- Date: 2026-03-31
+- Status: COMPLETE
+- Files modified: lib/features/topics/topics_screen.dart, lib/features/home/home_screen.dart
+- Verification: flutter analyze clean, API data loads, navigation confirmed
+
+---
+
+## Phase 7 — Splash Screen Polish
+- Date: 2026-03-31
+- Status: COMPLETE
+- Files modified: lib/features/splash/splash_screen.dart
+- Verification: flutter analyze clean, animations confirmed on device
+
+---

@@ -48,3 +48,15 @@
 - Status: ✅ COMPLETE
 - Files modified: src/routes/topics.js (replaced stub with full implementation)
 - Verification: GET /api/topics → 8 topics confirmed, GET /api/faqs → 10 FAQs confirmed
+
+---
+
+## Phase 5 — Auth Routes + User Profile
+- Date: 2026-03-31
+- Status: ✅ COMPLETE
+- Files created: src/services/authService.js, src/middleware/auth.js
+- Files modified: src/routes/auth.js (replaced stub with full implementation)
+- Endpoints: POST /api/auth/register, /login, /refresh — GET+PATCH /api/auth/me
+- Verification: register → 201, login → 200 with JWT, GET /me → profile confirmed,
+  duplicate register → 409 confirmed
+

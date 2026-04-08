@@ -19,49 +19,68 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    backgroundColor: AppColors.background,
-    body: Stack(children: [
-      // Ambient maroon glow
-      Positioned.fill(child: Container(decoration: const BoxDecoration(
-        gradient: RadialGradient(
-          center: Alignment(0, -0.2), radius: 0.75,
-          colors: [Color(0x668B1A2B), Color(0x228B1A2B), Color(0x000F0205)],
-        ),
-      ))),
-      // Center content
-      Center(child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        // CU logo placeholder
-        Container(
-          width: 88, height: 88,
-          decoration: BoxDecoration(
-            color: AppColors.primary,
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: AppColors.gold.withOpacity(0.5), width: 1.5),
+  Widget build(BuildContext context) {
+    final c = context.app;
+    return Scaffold(
+      backgroundColor: c.background,
+      body: Stack(children: [
+        // Layer 1: Primary maroon glow — soft mist
+        Positioned.fill(child: Container(decoration: BoxDecoration(
+          gradient: RadialGradient(
+            center: const Alignment(0, -0.3), radius: 1.0,
+            colors: [
+              c.glowColor,
+              c.glowColor.withValues(alpha: c.glowColor.a * 0.55),
+              c.glowColor.withValues(alpha: c.glowColor.a * 0.15),
+              c.glowColor.withValues(alpha: c.glowColor.a * 0.03),
+              Colors.transparent,
+            ],
+            stops: const [0.0, 0.25, 0.55, 0.8, 1.0],
           ),
-          child: const Icon(Icons.school_rounded, color: AppColors.gold, size: 44),
-        ).animate().fadeIn(duration: 600.ms).scale(begin: const Offset(0.7, 0.7)),
-        const SizedBox(height: 28),
-        Text('CampusAI',
-          style: GoogleFonts.playfairDisplay(
-            fontSize: 40, fontWeight: FontWeight.w700, color: AppColors.textPrimary),
-        ).animate().fadeIn(delay: 300.ms, duration: 600.ms).slideY(begin: 0.3),
-        const SizedBox(height: 8),
-        Text('Central University Ghana',
-          style: GoogleFonts.dmSans(fontSize: 14, color: AppColors.textSecondary),
-        ).animate().fadeIn(delay: 500.ms, duration: 600.ms),
-        const SizedBox(height: 4),
-        Text('Your AI campus guide',
-          style: GoogleFonts.dmSans(fontSize: 12, color: AppColors.gold, fontWeight: FontWeight.w500),
-        ).animate().fadeIn(delay: 700.ms, duration: 600.ms),
-      ])),
-      // Bottom label
-      Positioned(bottom: 40, left: 0, right: 0,
-        child: Text('Powered by Google Gemini',
-          textAlign: TextAlign.center,
-          style: GoogleFonts.dmSans(fontSize: 11, color: AppColors.textMuted),
-        ).animate().fadeIn(delay: 1000.ms),
-      ),
-    ]),
-  );
+        ))),
+        // Layer 2: Gold warmth bloom (light mode only)
+        if (c.glowColorTwo != Colors.transparent)
+          Positioned.fill(child: Container(decoration: BoxDecoration(
+            gradient: RadialGradient(
+              center: const Alignment(0.3, 0.0), radius: 1.1,
+              colors: [
+                c.glowColorTwo,
+                c.glowColorTwo.withValues(alpha: c.glowColorTwo.a * 0.3),
+                Colors.transparent,
+              ],
+              stops: const [0.0, 0.5, 1.0],
+            ),
+          ))),
+        // Center content
+        Center(child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Image.asset(
+            'assets/icon.png',
+            width: 110,
+            height: 110,
+          ).animate().fadeIn(duration: 600.ms).scale(begin: const Offset(0.7, 0.7)),
+          const SizedBox(height: 28),
+          Text('Campus Mind',
+            style: GoogleFonts.playfairDisplay(
+              fontSize: 40, fontWeight: FontWeight.w700, color: c.textPrimary),
+          ).animate().fadeIn(delay: 300.ms, duration: 600.ms).slideY(begin: 0.3),
+          const SizedBox(height: 8),
+          Text('Central University Ghana',
+            style: GoogleFonts.dmSans(fontSize: 14, color: c.textSecondary),
+          ).animate().fadeIn(delay: 500.ms, duration: 600.ms),
+          const SizedBox(height: 4),
+          Text('Your AI campus guide',
+            style: GoogleFonts.dmSans(
+              fontSize: 12, color: AppColors.gold, fontWeight: FontWeight.w500),
+          ).animate().fadeIn(delay: 700.ms, duration: 600.ms),
+        ])),
+        // Bottom label
+        Positioned(bottom: 40, left: 0, right: 0,
+          child: Text('Powered by Google Gemini',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.dmSans(fontSize: 11, color: c.textMuted),
+          ).animate().fadeIn(delay: 1000.ms),
+        ),
+      ]),
+    );
+  }
 }

@@ -26,8 +26,24 @@ Schools at Central University:
 - School of Graduate Studies
 - Centre for Open and Distance Education (CODE)
 
-[PASTE FULL PROGRAMME LIST PER SCHOOL — BSc, BA, LLB, BPharm, MBChB, etc.]
-[PASTE PROGRAMME DURATION IN YEARS — e.g. Engineering: 4 years, Nursing: 3 years]
+Programmes (selected):
+- School of Pharmacy:
+- - Doctor of Pharmacy (PharmD)
+- - Doctor of Pharmacy (Top-Up)
+- School of Law:
+- - Bachelor of Laws (LLB) — 4-year (WASSCE intake)
+- - Bachelor of Laws (LLB) — 3-year post-degree (graduates)
+- School of Engineering & Technology (SET):
+- - BSc Computer Science
+- - BSc Information Technology
+- - BSc Computer Science with Economics
+- - BSc Information Technology with Economics
+- - BSc Civil Engineering
+- Departments (SET):
+- - Computer Science & Information Technology
+- - Civil Engineering
+- Centre for Distance & Professional Education (CDPE):
+- - See cdpe.central.edu.gh for programme catalogue
 
 ---
 
@@ -354,6 +370,12 @@ WhatsApp: +2330233313180
 Public Relations email: pr@central.edu.gh
 Verification email: verification@central.edu.gh
 Website: https://central.edu.gh
+Additional lines:
+- Kumasi Campus: +2330322396189
+- Christ Temple: +2330302313185
+Additional emails:
+- academicdirector@central.edu.gh
+- international.relations@central.edu.gh
 
 [PASTE REGISTRAR NAME AND DIRECT CONTACT]
 [PASTE FINANCE DIRECTOR NAME AND CONTACT]
@@ -392,7 +414,27 @@ Resit Policy:
 ### 8. STUDENT LIFE
 
 SRC (Student Representative Council):
-- [PASTE SRC STRUCTURE AND CURRENT EXECUTIVES]
+- Current Executives:
+- - PATRICK AFUTU NARTEY (BILLS) — SRC President
+- - FESTUS TANOR — SRC Vice President
+- - Richard Nimako Sarpong — Deputy General Secretary
+- - Kingsley Dzigbordi Wiredu — Deputy Treasurer
+- - Awo Kwansima Ewusie — Deputy Wocom
+- - Dennis Kwame Deveer — Chief Justice
+- - Jorobon Emmanuel — Chief of Staff
+- - Isaac Kojo Donkor — Attorney General
+- - Egesi Favour Onyekachi — Internal Auditor
+- - Lewis Hammond — Organizing Secretary
+- - Obeng Baah Darling Justice — Deputy Organizing Secretary
+- - Amjad Bancy Mahmud — Welfare and Protocol Officer
+- - Stephen Antwi Boasiako — Deputy Welfare and Protocol Officer
+- - Adjagbe Kwame Joseph — Public Relations Officer
+- - Candy Glover — Deputy Public Relations Officer
+- - Andrew Owiredu — Projects and Planning Committee Chair
+- - Nana Yeboah Korang Quaque — External Affairs President
+- - Wisdom Antwi — Local NUGS General Secretary
+- - Naa Asarebea Oduro — Local NUGS Treasurer
+- - Eugene Adjei Twumasi — Local PUSAG General Secretary
 - [PASTE SRC SERVICES — printing discounts, transport, etc.]
 
 Clubs and Societies:
@@ -493,11 +535,9 @@ You help students, prospective students, parents, and staff get accurate answers
 campus life, academics, fees, facilities, and administrative processes.
 
 RULES:
-1. ONLY answer using information from the knowledge base below.
-2. If the answer is not in the knowledge base, say exactly:
-   "I don't have that specific information. Please contact the relevant office or visit central.edu.gh for the most up-to-date details."
-   Then suggest the most relevant contact (Finance, Admissions, Registrar, etc.).
-3. NEVER guess fees, dates, or requirements. Always recommend verification for these.
+1. First use the knowledge base below. If the answer is missing, search online and use authoritative sources — prioritize central.edu.gh and official CU PDFs/pages. If you still cannot find a reliable source, use the fallback message and suggest the most relevant office.
+2. When using online information, include the source domain in plain text (e.g. "Source: https://central.edu.gh/..."). Share links as plain URLs.
+3. NEVER guess fees, dates, or requirements. If not found after searching, use the fallback and recommend verification.
 4. For fees: always append — "Please confirm the exact amount with the Finance Office as fees may vary."
 5. For deadlines: always append — "Please verify with the Registrar's Office as dates may change."
 

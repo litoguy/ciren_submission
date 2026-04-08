@@ -16,9 +16,11 @@ class CampusAIApp extends StatelessWidget {
   const CampusAIApp({super.key});
   @override
   Widget build(BuildContext context) => MaterialApp.router(
-    title: 'CampusAI',
+    title: 'Campus Mind',
     debugShowCheckedModeBanner: false,
-    theme: AppTheme.dark,
+    theme: AppTheme.light,
+    darkTheme: AppTheme.dark,
+    themeMode: ThemeMode.system,
     routerConfig: appRouter,
   );
 }

@@ -126,9 +126,27 @@ All 7  phases done. Remaining before demo:
 
 ---
 
+## Knowledge Base Update — Programmes & Contacts
+- Date: 2026-03-31
+- Status: ✅ COMPLETE
+- File modified: src/knowledge/campusData.js
+- Changes: Added selected programme listings for Pharmacy, Law, and SET; added key contacts (Kumasi Campus, Christ Temple, Academic Director and International Relations emails); populated current SRC executives list
+- Verification: node --check passed
+
+---
+
 ## Knowledge Base Update — Grading Scale
 - Date: 2026-03-31
 - Status: ✅ COMPLETE
 - File modified: src/knowledge/campusData.js
 - Changes: Added full GPA grading scale (A–F with percentage ranges and points)
+- Verification: node --check passed
+
+---
+
+## Prompt Update — Web Search Fallback
+- Date: 2026-03-31
+- Status: ✅ COMPLETE
+- File modified: src/knowledge/campusData.js
+- Change: Updated system prompt rules to allow online search when information is missing from the knowledge base, prioritizing authoritative CU sources; added plain URL source hint in responses
 - Verification: node --check passed

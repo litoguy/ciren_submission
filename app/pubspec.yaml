@@ -37,11 +37,15 @@ dependencies:
   http: ^1.2.1
   shared_preferences: ^2.2.3
   flutter_dotenv: ^5.1.0
+  flutter_markdown: ^0.7.7+1
+  url_launcher: ^6.3.2
+  speech_to_text: ^7.3.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.14.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -56,6 +60,26 @@ flutter:
 
   assets:
     - .env
+    - assets/icon.png
+
+flutter_launcher_icons:
+  # Android
+  android: true
+  image_path: "assets/icon.png"
+  min_sdk_android: 21
+  adaptive_icon_background: "#FFFFFC"
+  adaptive_icon_foreground: "assets/icon.png"
+
+  # iOS
+  ios: true
+  remove_alpha_ios: true
+
+  # Web
+  web:
+    generate: true
+    image_path: "assets/icon.png"
+    background_color: "#FFFFFC"
+    theme_color: "#8B1A2B"
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:campus_ai/features/splash/splash_screen.dart';
 import 'package:campus_ai/features/chat/chat_screen.dart';

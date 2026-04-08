@@ -134,7 +134,7 @@ const Index = () => {
           <h2 className="font-semibold text-foreground">AI Chat</h2>
           <div className="ml-auto flex items-center gap-2">
             <span className="text-xs px-2.5 py-1 rounded-full bg-gold-pale text-primary font-medium">
-              Central University
+              CIREN HACKATHON 2026
             </span>
           </div>
         </header>

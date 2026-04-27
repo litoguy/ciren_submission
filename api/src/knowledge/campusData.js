@@ -21,7 +21,7 @@ Schools at Central University:
 - School of Medical Sciences
 - School of Nursing and Midwifery
 - Faculty of Arts and Social Sciences (FASS)
-- School of Architecture and Built Environment (SADe)
+- School of Architecture and Design (SADe)
 - Central Business School (CBS)
 - School of Graduate Studies
 - Centre for Distance and Professional Education (CDPE)
@@ -698,6 +698,36 @@ Rev. Prof. Kingsley Larbi is appointed as the first Principal
 - - Marketing: BSc Business Administration (Marketing) | MBA Marketing (18 months)
 - - Human Resource Management: BSc Business Administration (HRM) | MBA HRM (18 months)
 - Library: CARLIGH member; E-journals and ProQuest E-books; Koha Library Management System catalogue
+
+#### FACULTY OF ARTS AND SOCIAL SCIENCES (FASS)
+- Established: 2006 (original departments: English, French, Economics, Environment and Development Studies)
+- Dean: Dr. Ransford Antwi
+- Contact: Block G, 3rd Floor, Room G401, Miotso Campus | Tel: 030 331 5880-5 Ext. 3462 | Email: info.fass@central.edu.gh
+- Departments:
+- - Department of Social Sciences (DOSS): Psychology, Sociology, Social Work, Theology, Education units + William Ofori Atta Institute of Integrity (WOAII)
+- - Department of Communication and Media Studies: Communication & Media Studies programme + Vision and Life Unit
+- - Department of Economics and Development Studies: Economics, Environment & Development Studies, Agri-Business units
+- Undergraduate Programmes: BSc Psychology | BA Sociology | BA Social Work | BA Theology | BA Communication and Media Studies | BSc Economics
+- Postgraduate Programmes: MA Education | MPhil Theology | MPhil Education | MPhil Guidance & Counselling | MPhil Educational Leadership & Administration | MA Sacred Ministry | MA Religious Studies | MA Development Policy | MA Educational Leadership & Administration | MA/MPhil Communication Studies | MA/MPhil Communication Management | MA/MPhil Communication & Development | MA/MPhil Journalism & Media Studies | MPhil Economics | MPhil Development Policy | MBA Agribusiness (18 months) | MSc Monitoring, Evaluation & Impact Assessment | PGDE
+- NEW Programmes for 2026/2027: Bachelor of Law and Economics | Bachelor of Law with Economics | BSc Economics and Computer Science | BSc Economics with Computer Science | BSc Economics and IT | BSc Economics with IT | BSc Computer Science with Economics | BSc IT with Economics | BSc Economics with Law | MSc Monitoring, Evaluation & Impact Assessment
+- Special Admission Notes:
+- - BA Social Work: Diploma holders from recognised institutions can join at L300 (weekend, Christ Temple); social welfare practitioners with 3+ years experience can join at L200
+- - BA Communication and Media Studies: Diploma holders from accredited journalism/communication institutions (GPA 3.25+) may be admitted at L200 or L300
+- Lecturers: Dr. Perpetual Nancy Baidoo Kodom | Dr. Philomina Mintah | Mr. Michael Darlington Tchume | Dr. Denise Diana Duncan | Dr. Marian Tsegah | Dr. Rosemary Kimani | Dr. Fredua Kwasi Agyeman | Dr. Feizel Ayitey Aryee | Ms. Worlali Nyaledzigbor | Rev. Dr. Godson Ahiabor | Dr. Ransford Antwi | Kofi Aaron A-O. Agyei-Henaku | Ms. Akua Agyeiwaa-Afrane | Rev. Andrew T. Gbandeh-Mitta | Prince Osei-Sarfo | Francis Srofenyoh | Dr. Mrs. Mattah M. Memuna | Mr. Mawuli Kodzo Beduya | Mr. Kofi Akpabli | Mr. Feikoab Parimah | Evangelist Isaac Boapeah | Dr. Ernest K. Kobo | Ms. Abena Anyankwabea Gyampo | Dr. Doris Ekua Yalley | Mr. Daniel Offei | Mr. George Hughes | Dr. Ardina Anita Naa Abia Addy | Mrs. Amma Serwaa Aboagye Kyei | Dr. Margaret Amenuke Edusei | Rev. Dr. Aaron Adjei
+
+#### SCHOOL OF ARCHITECTURE AND DESIGN (SADe)
+- Overview: Offers comprehensive education in architecture and design; curriculum covers architectural principles, design methodologies, sustainability, and emerging technologies; students engage in studio-based projects, workshops, and field visits
+- Vice-Dean: Arc. Mrs. Ninnette Quaofio
+- Ag. Faculty Officer: Mrs. Paulina Agyeiwaah Neequaye
+- Programmes:
+- - Bachelor of Architecture
+- - BSc Fashion Design
+- - BSc Interior Design
+- - BSc Landscape Design
+- - BSc Graphic Design
+- - BSc Real Estate
+- - BSc Planning
+- Lecturers: Mr. Jonathan B. Nerquaye-Tetteh | Delali Gadzekpo
 
 #### SCHOOL OF GRADUATE STUDIES AND RESEARCH (SGS/SGSR)
 - Location: Christ Temple Campus
